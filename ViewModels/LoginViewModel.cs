@@ -11,6 +11,6 @@ namespace HelpDeskWeb.ViewModels
         [DataType(DataType.Password)]
         public string Password { get; set; }
         [Display(Name = "Rememeber me?")]
-        bool RememberMe { get; set; }
+        public bool RememberMe { get; set; }
     }
 }

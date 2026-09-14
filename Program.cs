@@ -2,6 +2,7 @@ using HelpDeskWeb.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using HelpDeskWeb.Models;
+using HelpDeskWeb.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -47,6 +48,8 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
 
 var app = builder.Build();
 
+await SeedService.SeedDatabase(app.Services);
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -57,6 +60,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
